@@ -60,7 +60,7 @@
 
 `Clone` trait 可以明确地创建一个值的深拷贝（deep copy），复制过程可能包含任意代码的执行以及堆上数据的复制。查阅第四章 [“变量与数据交互的方式（二）：克隆”][ways-variables-and-data-interact-clone] 以获取有关 `Clone` 的更多信息。
 
-派生 `Clone` 实现了 `clone` 方法，其为整个的类型实现时，在类型的每一部分上调用了 `clone` 方法。这意味着类型中所有字段或值也必须实现了 `Clone`，这样才能够派生 `Clone` 。
+Clone实现了clone方法，当为整个类型实现该方法时，会对该类型的每个部分调用clone。这意味着该类型中的所有字段或值也必须实现Clone才能派生Clone。
 
 例如，当在一个切片（slice）上调用 `to_vec` 方法时，`Clone` 是必须的。切片并不拥有其包含的实例，但是从 `to_vec` 中返回的 vector 需要拥有其实例，因此，`to_vec` 在每个元素上调用 `clone`。因此，存储在切片中的类型必须实现 `Clone`。
 
